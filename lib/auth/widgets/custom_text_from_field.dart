@@ -23,10 +23,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(right: 3, left: 3, bottom: 10,top: 10),
-      decoration: BoxDecoration(
-          color: Colors.grey.shade300, borderRadius: BorderRadius.circular(14)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: TextFormField(
         validator: validator,
         controller: controller,
@@ -36,6 +34,18 @@ class CustomTextField extends StatelessWidget {
         autocorrect: true,
         cursorColor: Colors.purple,
         decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                 borderRadius: BorderRadius.circular(14)
+            ),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(14)
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(14)
+            ),
+            disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(14),
+            ),
             labelStyle: const TextStyle(color: Colors.purple),
             focusColor: Colors.purple,
             prefixIconColor: Colors.purple,
@@ -45,7 +55,8 @@ class CustomTextField extends StatelessWidget {
             hintText: hintText,
             labelText: labelText,
             suffixIcon: suffixIcon,
-            fillColor: Colors.purple,
+            filled: true,
+            fillColor: Colors.grey.shade200,
             errorBorder: const OutlineInputBorder(borderSide: BorderSide.none),
             errorStyle: const TextStyle(fontSize: 13)),
       ),

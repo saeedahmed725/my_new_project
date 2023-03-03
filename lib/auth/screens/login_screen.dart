@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:task2/auth/widgets/curve.dart';
+
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_from_field.dart';
 import 'Second_Screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool visibilityPassword = false;
   bool visibilityConfirmPassword = false;
   GlobalKey<FormState> formKey = GlobalKey();
@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (value.contains('@')) {
       return null;
     } else {
-      return 'invalid Email';
+      return 'Email invalid';
     }
   }
 
@@ -59,26 +59,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipPath(
-              clipper: MyClipper(),
-              child: Container(
-                height: 300,
-                 width: double.infinity,
-                 alignment: Alignment.center,
-                 decoration: const BoxDecoration(
-                   color: Colors.purple
-                 )
-                ,
-                 child: const Text("Register",
-                     style: TextStyle(
-                         fontSize: 40,
-                         fontWeight: FontWeight.bold,
-                         color: Colors.white)),
-              ),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset("images/Shape.jpg"),
+                const Text("Register",
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white)),
+              ],
             ),
-
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Form(
                 key: formKey,
                 child: Column(
@@ -161,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       validator: (value) => confirmPasswordValidation(value: value!),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     CustomButton(
                       text: "Register",
